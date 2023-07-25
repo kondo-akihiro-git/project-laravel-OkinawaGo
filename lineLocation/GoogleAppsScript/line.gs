@@ -3,21 +3,21 @@
 ---------------------------------------*/
 
 // DB接続情報
-const projectId = '';
-const area = '';  
-const instanceId = '';
-const userName = '';
-const password = '';
-const dbName = '';
-const urlstart = '';
+const projectId = '*****';
+const area = '*****';
+const instanceId = '*****';
+const userName = '*****';
+const password = '*****';
+const dbName = '*****';
+const urlstart = '*****';
 
 // テーブル情報
-const linetable = "";
-const colLineId = '';
-const colLocation = '';
+const linetable = '*****';
+const colLineId = '*****';
+const colLocation = '*****';
 
-const usertable = "";
-const colUserID = "";
+const usertable = '*****';
+const colUserID = '*****';
 
 
 
@@ -25,7 +25,7 @@ const colUserID = "";
 let token = "line Token";
 let url = 'https://api.line.me/v2/bot/message/reply';
 
-let replyToken = "";
+let replyToken = '*****';
 
 /*---------------------------------------
 ----------------mainメソッド--------------
