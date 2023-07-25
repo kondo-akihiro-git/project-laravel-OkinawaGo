@@ -1,0 +1,106 @@
+﻿@page "/register"
+@using lineLocation.Models;
+@inject IMessageService _message;
+
+<PageTitle>Register</PageTitle>
+<br />
+<h1>Register</h1>
+<br>
+<br>
+<label class="label" for="name">Mail Address</label>
+<Input Placeholder="test@gmail.com" type="email" max="50" AllowClear="true" OnChange="onChange" TValue="string" @bind-Value="mailaddress" />
+<br>
+<br>
+<label class="label" for="e-mail">Password</label>
+<Input Placeholder="password" type="password" max="50" AllowClear="true" OnChange="onChange" TValue="string" @bind-Value="password" />
+<br>
+<br>
+<br>
+<div id="button-block-demo">
+	<Button Type="@ButtonType.Primary" @onclick="register" Block>REGISTER</Button>
+	<style>
+		#button-block-demo > * {
+			margin-bottom: 12px;
+			background-color: gray;
+			border-color: black;
+		}</style>
+</div>
+<br>
+
+@if(_finishRegistered == true){
+	<br>
+<Alert Type="@AlertType.Success"
+	   Message="Success"
+	   Description="Your data has been properly stored in the Database."
+	   ShowIcon="true" />
+}
+
+@if (_finishRegistered == true || exist == true)
+{
+	<br>
+	<p>
+		Please save your userId carefully. &nbsp;
+		<strong>Send your ID to LINE bot</strong> &nbsp;
+		Please do not attach any message other than Id.
+	</p>
+
+	<p>Here is you userId.</p>
+	<Input @bind-Value="@userId" ReadOnly />
+}
+
+<Modal Visible="@_isModalVisibleDuplicated" Closable="true" Footer="null">
+	<p>MailAddress and password has been already registered.</p>
+</Modal>
+
+
+@code {
+	private string mailaddress { get; set; }
+
+	private string password { get; set; }
+
+	private string userId { get; set; }
+
+	private bool exist { get; set; }
+
+	private bool _isModalVisibleRegistered = false;
+	private bool _isModalVisibleDuplicated = false;
+
+	private bool _finishRegistered = false;
+
+	private void register()
+	{
+		try
+		{
+			if (mailaddress != null & password != null)
+			{
+
+				exist = false;
+
+				exist = Select.FlagSelectLogintable(mailaddress, password);
+				if (exist == false)
+				{
+					Insert.InsertLoginData(mailaddress, password);
+					_isModalVisibleRegistered = true;
+					_finishRegistered = true;
+
+					userId = Select.SelectUserIdByAddressPassword(mailaddress, password);
+				}
+				else if (exist == true)
+				{
+					_isModalVisibleDuplicated = true;
+				}
+
+			}
+		}
+		catch
+		{
+			_message.Error("not registered");
+		}
+
+	
+	}
+	private void onChange(string value)
+	{
+		Console.WriteLine("onChange =>" + value);
+	}
+}

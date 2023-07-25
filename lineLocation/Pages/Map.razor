@@ -1,0 +1,85 @@
+﻿@using MySql.Data.MySqlClient;
+@using System.Security.Claims;
+@using lineLocation.Config;
+@using lineLocation.Models;
+@using Microsoft.AspNetCore.Mvc;
+@inject IMessageService _message
+@page "/index"
+
+<PageTitle>Index</PageTitle>
+<br />
+<h1>Map</h1>
+<br>
+<label class="label" for="name">Mail Address</label>
+<Input Placeholder="test@gmail.com" type="email" max="50" AllowClear="true" OnChange="onChange" TValue="string" @bind-Value="mailaddress" />
+<br>
+<br>
+<label class="label" for="e-mail">Password </label>
+<Input Placeholder="password" AllowClear="true" max="50" type="password" OnChange="onChange" TValue="string" @bind-Value="password" />
+<br>
+<br>
+<br>
+<div id="button-block-demo">
+	<Button Type="@ButtonType.Primary" @onclick="login" Block>Click Here.</Button>
+	<style>
+		#button-block-demo > * {
+			margin-bottom: 12px;
+			background-color: gray;
+			border-color: black;
+		}
+	</style>
+</div>
+If you do not have your account, click here. <a href="register">register</a>
+<br>
+<br>
+@inject IJSRuntime JSRuntime
+
+<h4>Your phone is ...</h4>
+<div id="map" style="height:400px;width:100%; border-style:solid; border-radius:8px">
+</div>
+
+
+
+@code {
+	private string mailaddress { get; set; }
+
+	private string password { get; set; }
+
+	private string location = "";
+
+
+	protected static string userId = "";
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		location = "Toyko station";
+
+		if (firstRender)
+		{
+			await JSRuntime.InvokeVoidAsync("initialize", location);
+		}
+	}
+	public void login()
+	{
+		try
+		{
+			string userId = Select.SelectUserIdByAddressPassword(mailaddress, password);
+
+			string lineId = Select.SelectLineIdByUserId(userId);
+
+			location = Select.SelectLocationByLineId(lineId);
+
+			JSRuntime.InvokeVoidAsync("initialize", location);
+
+			_message.Error("Good Address.");
+		}
+		catch
+		{
+			_message.Error("No date.");
+		}
+	}
+	private void onChange(string value)
+	{
+		Console.WriteLine("onChange =>" + value);
+	}
+}

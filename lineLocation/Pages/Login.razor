@@ -1,0 +1,40 @@
+﻿@page "/login"
+
+
+<PageTitle>ログイン</PageTitle>
+
+<h1>ログイン</h1>
+
+
+    <label class="label" for="name">Mail Address : </label>
+    <input id="name" type="text" name="mailaddress" placeholder="microsoft@google.com" @bind="mailaddress">
+    <br><br>
+
+    <label class="label" for="e-mail">Password : </label>
+    <input id="e-mail" type="text" name="password" placeholder="password" @bind="password">
+
+    <input type="submit" @onsubmit="login">
+
+@code {
+    private string mailaddress { get; set; }
+
+    private string password { get; set; }
+
+    //string flag = "false"; //適当に何か入れてください。
+
+
+    private string userId = "";
+
+    private void login()
+    {
+        //userID = getUserIDbyAddressPass(mailaddress, password);
+        //if (userId != null)
+        //{
+        //    StateContainer.login_flag = "true";
+        //}
+        //else
+        //{
+        //    StateContainer.login_flag = "true";
+        //}    
+    }
+}
