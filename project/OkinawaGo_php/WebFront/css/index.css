@@ -1,0 +1,218 @@
+
+
+*{
+  margin:0;
+  padding: 0;
+}
+
+body{
+
+}
+.content{
+margin:1% 13% 0% 13%;
+font-family: source-han-sans-japanese,sans-serif;
+font-weight: 300px;
+font-style: normal;
+margin-bottom:3%
+
+}
+.error{
+text-align:center;
+padding:20px;
+background-color:rgb(255, 48, 48,0.5);
+}
+h1{
+text-align:center;
+}
+
+h1 img{
+width:35%;
+height:35%;
+}
+
+.input{
+text-align:center;
+margin-bottom:5%;
+}
+.input_var{
+border: 1px solid #bfbfbf;
+outline: none;
+padding:14px;
+}
+.fas{
+border:none;
+background-color:#FFFFFF;
+font-size:2vw;
+margin-left:10px;
+}
+
+
+h2{
+font-size:2vw;
+color:#000000;
+}
+
+a:hover{
+text-decoration:none;
+
+}
+h2::after{
+  content: '';
+  display: inline-block;
+  width: 5vw;
+  height: 5vw;
+  background-image: url(../img/titleback.jpg);
+  background-size: contain;
+  vertical-align: text-top;
+  background-repeat:  no-repeat; 
+}
+
+.img img{
+object-fit:cover;
+width:100%;
+height:100%;	
+}
+
+.wrapper {
+  display: grid;
+  column-gap: 15px;
+  row-gap: 1em;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+img:nth-of-type(1){
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+img:nth-of-type(2){
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+img:nth-of-type(3){
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+
+
+.adLink{
+text-align: right;
+}
+
+.adLink a{
+color:#575757;
+font-size:1.4vw;
+}
+
+footer{
+text-align: center;
+background-color: #DAE3F3;
+margin:0px;
+width:100%;
+height: 60px;
+bottom: 0;
+}
+
+
+/*------------------------------------------------------------------*/
+@media screen and (min-width:768px) and (max-width:960px){
+
+body{
+}
+h1 img{
+width:50%;
+height:50%;
+}
+
+.input{
+margin-bottom:5%;
+}
+.input_var{
+padding:6px;
+}
+
+
+h2{
+font-size:2.4vw;
+}
+
+h2::after{
+  width: 5vw;
+  height: 5vw;
+}
+
+.wrapper {
+  column-gap: 10px;
+margin-bottom:8%;
+}
+
+.adLink a{
+font-size:2.0vw;
+}
+
+}
+
+/*------------------------------------------------------------------*/
+@media screen and (max-width:767px){
+
+*{
+  margin:0;
+  padding: 0;
+}
+
+body{
+}
+.content{
+margin:5% 10% 0% 10%;
+}
+h1 img{
+width:90%;
+height:90%;
+}
+
+.input{
+margin-bottom:8%;
+}
+.input_var{
+padding:6px;
+}
+.fas{
+border:none;
+background-color:#FFFFFF;
+}
+
+
+h2{
+font-size:3vw;
+}
+
+h2::after{
+  width: 7vw;
+  height: 7vw;
+}
+
+
+.wrapper img{
+width:100%;
+height:100%;
+}
+
+
+.addLink{
+text-align: right;
+}
+
+.addLink a{
+font-size:2vw;
+}
+
+}
