@@ -5,6 +5,8 @@
 沖縄の観光地を検索するWebアプリです。  
 Javaで作成された観光地検索アプリのPHPバージョンです。
 
+![map](https://github.com/kondo-akihiro-git/project-java-OkinawaGo/assets/139307918/1c761ad2-0415-44ed-ae4b-62c6c96a2b87)
+
 ## 機能
 
 CRUD機能  
